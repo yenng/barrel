@@ -1,0 +1,92 @@
+`timescale 1ns/1ns
+
+module testBench();
+	reg Load, Reset, Clock;
+	reg [2:0] Select;
+	reg [7:0] Data_in;
+	wire [7:0] Data_out;
+	
+	barrel #(.data_size(8)) testTestTest(Clock, Reset, Load, Select, Data_in, Data_out);
+	
+	//declare the clock
+	initial begin
+		Clock <= 0;
+		Select <= 3;
+		Data_in <= 20;
+	end
+	
+	always #5 Clock <= ~Clock;
+	
+	//declare the reset
+	initial begin
+		Reset <= 0;
+		@(posedge Clock)
+		@(negedge Clock) Reset <= 1;
+	end
+	
+	
+	wire [7:0] br1_out,br1_in;
+	always@(posedge Clock, negedge Reset) begin
+		
+	end
+	always@(Select, Load, Data_in) begin
+		multiplexer(Data_in, Data_out, Load, br1_in);
+		barrel_shifter(Select, br1_in, br1_out);
+	end
+
+	
+	
+	//verify the output values
+	task verify_output;
+		input [23:0] simulated_value;
+		input [23:0] expected_value;
+		integer errors = 0;
+		begin
+			if (simulated_value != expected_value)
+			begin
+				errors = errors + 1;
+				$display("Simulated Value = %h, Expected Value = %h, errors = %d, at time = %d\n", simulated_value, expected_value,	errors, $time);
+			end
+		end
+	endtask 
+		
+	task multiplexer;
+		input [7:0] in1, in2;
+		input selector;
+		output reg [7:0] out;
+		begin
+			if(selector)
+				out = in1;
+			else 
+				out = in2;
+		end    
+	endtask
+	
+	task RESET;
+		output reg [7:0] out;
+		begin
+			out = 8'b00000000;
+		end
+	endtask
+	
+	task barrel_shifter;
+		input [2:0] sel;
+		input [7:0] in;
+		output reg [7:0] out;
+		integer i, j;
+		begin
+			for(j=0;j<=sel;j=j+1) begin
+				for(i=0;i<7;i=i+1)
+					out[i+1] = in[i];
+				out[0] = in[7];
+			end
+		end
+	endtask
+	
+	task register;
+		input [7:0] in;
+		output reg [7:0] out;
+		out = in;
+	endtask
+	
+endmodule 
