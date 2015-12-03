@@ -5,18 +5,36 @@ module barrel_tb();
 	reg [2:0] Select;
 	reg [7:0] Data_in,Expected_out;
 	wire [7:0] Simulated_out;
-	wire [7:0] br1_out,br1_in;
+	reg [7:0] br1_out,br1_in;
+	integer errors, i, j, k;
 	
 	barrel #(.data_size(8)) testTestTest(Clock, Reset, Load, Select, Data_in, Simulated_out);
 	
 	//declare the clock
 	initial begin
-		Clock <= 0;
-		Select <= 3;
-		Data_in <= 8'd20;
+		Clock = 0;
+		Load = 0;
+		Select = 3;
+		errors = 0;
+		Data_in = {$random};
+	  #100   if(errors != 0)	$display("Error: %d", errors);
+	   	    	else		$display("Successfully tested with zero error!");
+	         $finish;
 	end
 	
+	
 	always #5 Clock <= ~Clock;
+	
+	//set value for Select
+	initial begin
+	 for(k=3;k>=0;k = k -1) begin
+	   # 10 Select = Select - 1;
+	   if(Select == 0) begin 
+	     Select = 3;
+	     Load = 1;
+	   end
+	 end  
+	end
 	
 	//declare the reset
 	initial begin
@@ -26,7 +44,7 @@ module barrel_tb();
 	end
 	
 	
-
+  //call verify_output task and reset the function.
 	always@(posedge Clock, negedge Reset) begin
 		verify_output(Simulated_out,Expected_out);
 		if (Reset)
@@ -34,9 +52,11 @@ module barrel_tb();
 		else
 			Expected_out <= br1_out;
 	end
+	
+	//call multiplexer and barrel_shifter task.
 	always@(Select, Load, Data_in) begin
-		multiplexer(Data_in, Expected_out, Load, br1_in);
-		barrel_shifter(Select, br1_in, br1_out);
+		multiplexer();
+		barrel_shifter();
 	end
 
 	
@@ -45,7 +65,6 @@ module barrel_tb();
 	task verify_output;
 		input [23:0] simulated_value;
 		input [23:0] expected_value;
-		integer errors = 0;
 		begin
 			if (simulated_value != expected_value)
 			begin
@@ -55,28 +74,23 @@ module barrel_tb();
 		end
 	endtask 
 		
+	//multiplexer
 	task multiplexer;
-		input [7:0] in1, in2;
-		input selector;
-		output reg [7:0] out;
 		begin
-			if(selector)
-				out = in1;
+			if(Load)
+				br1_in = Data_in;
 			else 
-				out = in2;
+				br1_in = Expected_out;
 		end    
 	endtask
 	
+	//barrel_shifter
 	task barrel_shifter;
-		input [2:0] sel;
-		input [7:0] in;
-		output reg [7:0] out;
-		integer i, j;
 		begin
-			for(j=0;j<=sel;j=j+1) begin
+			for(j=0;j<=Select;j=j+1) begin
 				for(i=0;i<7;i=i+1)
-					out[i+1] = in[i];
-				out[0] = in[7];
+					br1_out[i+1] = br1_in[i];
+				br1_out[0] = br1_in[7];
 			end
 		end
 	endtask

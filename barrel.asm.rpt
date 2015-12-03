@@ -1,6 +1,6 @@
 Assembler report for barrel
-Tue Nov 17 15:22:07 2015
-Quartus II Version 9.1 Build 222 10/21/2009 SJ Web Edition
+Thu Dec 03 17:07:58 2015
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
 ---------------------
@@ -10,8 +10,8 @@ Quartus II Version 9.1 Build 222 10/21/2009 SJ Web Edition
   2. Assembler Summary
   3. Assembler Settings
   4. Assembler Generated Files
-  5. Assembler Device Options: C:/Users/Student/Desktop/yen/barrel/barrel.sof
-  6. Assembler Device Options: C:/Users/Student/Desktop/yen/barrel/barrel.pof
+  5. Assembler Device Options: C:/Users/Yen/Desktop/barrel/barrel.sof
+  6. Assembler Device Options: C:/Users/Yen/Desktop/barrel/barrel.pof
   7. Assembler Messages
 
 
@@ -19,7 +19,7 @@ Quartus II Version 9.1 Build 222 10/21/2009 SJ Web Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 1991-2009 Altera Corporation
+Copyright (C) 1991-2013 Altera Corporation
 Your use of Altera Corporation's design tools, logic functions 
 and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Nov 17 15:22:07 2015 ;
+; Assembler Status      ; Successful - Thu Dec 03 17:07:58 2015 ;
 ; Revision Name         ; barrel                                ;
 ; Top-level Entity Name ; barrel                                ;
 ; Family                ; Cyclone II                            ;
@@ -59,7 +59,7 @@ applicable agreement for further details.
 ; Clock source for configuration device                                       ; Internal ; Internal      ;
 ; Clock frequency of the configuration device                                 ; 10 MHZ   ; 10 MHz        ;
 ; Divide clock frequency by                                                   ; 1        ; 1             ;
-; Auto user code                                                              ; Off      ; Off           ;
+; Auto user code                                                              ; On       ; On            ;
 ; Use configuration device                                                    ; On       ; On            ;
 ; Configuration device                                                        ; Auto     ; Auto          ;
 ; Configuration device auto user code                                         ; Off      ; Off           ;
@@ -78,53 +78,53 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 
 
-+------------------------------------------------+
-; Assembler Generated Files                      ;
-+------------------------------------------------+
-; File Name                                      ;
-+------------------------------------------------+
-; C:/Users/Student/Desktop/yen/barrel/barrel.sof ;
-; C:/Users/Student/Desktop/yen/barrel/barrel.pof ;
-+------------------------------------------------+
++----------------------------------------+
+; Assembler Generated Files              ;
++----------------------------------------+
+; File Name                              ;
++----------------------------------------+
+; C:/Users/Yen/Desktop/barrel/barrel.sof ;
+; C:/Users/Yen/Desktop/barrel/barrel.pof ;
++----------------------------------------+
 
 
-+--------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Student/Desktop/yen/barrel/barrel.sof ;
-+----------------+---------------------------------------------------------+
-; Option         ; Setting                                                 ;
-+----------------+---------------------------------------------------------+
-; Device         ; EP2C20F484C7                                            ;
-; JTAG usercode  ; 0xFFFFFFFF                                              ;
-; Checksum       ; 0x001B57A1                                              ;
-+----------------+---------------------------------------------------------+
++------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/Yen/Desktop/barrel/barrel.sof ;
++----------------+-------------------------------------------------+
+; Option         ; Setting                                         ;
++----------------+-------------------------------------------------+
+; Device         ; EP2C20F484C7                                    ;
+; JTAG usercode  ; 0x001B4ACE                                      ;
+; Checksum       ; 0x001B4ACE                                      ;
++----------------+-------------------------------------------------+
 
 
-+--------------------------------------------------------------------------+
-; Assembler Device Options: C:/Users/Student/Desktop/yen/barrel/barrel.pof ;
-+--------------------+-----------------------------------------------------+
-; Option             ; Setting                                             ;
-+--------------------+-----------------------------------------------------+
-; Device             ; EPCS16                                              ;
-; JTAG usercode      ; 0x00000000                                          ;
-; Checksum           ; 0x1DD8DFF8                                          ;
-; Compression Ratio  ; 3                                                   ;
-+--------------------+-----------------------------------------------------+
++------------------------------------------------------------------+
+; Assembler Device Options: C:/Users/Yen/Desktop/barrel/barrel.pof ;
++--------------------+---------------------------------------------+
+; Option             ; Setting                                     ;
++--------------------+---------------------------------------------+
+; Device             ; EPCS16                                      ;
+; JTAG usercode      ; 0x00000000                                  ;
+; Checksum           ; 0x1DD8F400                                  ;
+; Compression Ratio  ; 3                                           ;
++--------------------+---------------------------------------------+
 
 
 +--------------------+
 ; Assembler Messages ;
 +--------------------+
 Info: *******************************************************************
-Info: Running Quartus II Assembler
-    Info: Version 9.1 Build 222 10/21/2009 SJ Web Edition
-    Info: Processing started: Tue Nov 17 15:22:06 2015
+Info: Running Quartus II 64-Bit Assembler
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Thu Dec 03 17:07:55 2015
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off barrel -c barrel
-Info: Writing out detailed assembly data for power analysis
-Info: Assembler is generating device programming files
-Info: Quartus II Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 209 megabytes
-    Info: Processing ended: Tue Nov 17 15:22:07 2015
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+Info (115031): Writing out detailed assembly data for power analysis
+Info (115030): Assembler is generating device programming files
+Info: Quartus II 64-Bit Assembler was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 434 megabytes
+    Info: Processing ended: Thu Dec 03 17:07:58 2015
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 
